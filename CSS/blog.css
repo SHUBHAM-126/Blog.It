@@ -228,6 +228,13 @@
    .card-padding{
      padding: 0px;
    }
+   .mob-card{
+     padding: 1.25rem 0px;
+   }
 
+   .mob-col{
+     flex: 100%;
+     max-width: 100%;
+   }
 
   }
