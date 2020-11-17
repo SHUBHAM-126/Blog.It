@@ -1,0 +1,23 @@
+#m-body{
+padding:2rem 3rem;
+}
+
+@media screen and ( max-width:480px){
+
+    #m-body{
+        padding: 20px;
+        padding-bottom: 30px;
+    }
+
+
+    .my-div-tag{
+        flex: 100%;
+        max-width: 100%;
+        border-style: none;
+    }
+
+    #mt-category{
+        margin-top: 20px;
+    }
+
+}
