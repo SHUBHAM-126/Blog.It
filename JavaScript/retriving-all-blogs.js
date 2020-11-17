@@ -517,7 +517,7 @@ dbBlogs.once("value", function (blogs) {
 
             prof_img.addEventListener("click", function () {
                 sessionStorage.setItem("User_Id", singleblog.val().userId);
-                window.location.href = "Profile.html";
+                
             });
 
             var div_prof_name = document.createElement("DIV");
