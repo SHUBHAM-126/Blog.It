@@ -1,0 +1,39 @@
+#search-section{
+    margin-top: 3rem;
+    margin-bottom: .5rem;
+    margin-left: 0px;
+    margin-right: 0px;
+
+    padding: 0px;
+}
+
+
+#search-div{
+    display: flex;  
+}
+
+#search-div h3{
+    font-family: 'Poppins', sans-serif;
+    margin-right: auto;
+}
+
+
+@media screen and (max-width:480px){
+    #search-section{
+        margin: 20px 0px 0px;
+        padding: 0px;
+    }
+
+    #search-div{
+        flex-direction: column;
+    }
+
+    #search-div h3{
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    #search-div .form-inline{
+        width:fit-content;
+    }
+}

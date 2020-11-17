@@ -1,0 +1,44 @@
+#main-div{
+    margin: 3rem 0px;
+}
+
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+    color:  #FC7522;
+}
+
+@media screen and (max-width:480px){
+#main-div{
+    margin: 20px 0px;
+}
+
+#div-1{
+    margin-bottom: 20px;
+}
+
+#tabs{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+
+.card-body{
+    padding: 20px 10px;
+}
+
+.my-label{
+    font-size: 11px;
+    flex: auto;
+    max-width: 25%;
+    padding-right: 10px;
+}
+
+.my-inp-size{
+    font-size: 12px;
+}
+
+#prof_image{
+    height: 65px;
+    width:65px;
+}
+
+}
