@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <script src="https://kit.fontawesome.com/ce4c0eef9f.js" crossorigin="anonymous"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Create your blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #fff;
+            color: #007bff;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .dropdown-item:hover {
+            color: #007bff;
+            background-color: #fff;
+        }
+
+        .dropdown-item:focus {
+            outline: none;
+        }
+
+        #back_btn:hover {
+            background-color: #fff;
+            color: #000000;
+        }
+
+        #delete:hover {
+            border-color: #dc3545;
+            background-color: #fff;
+            color: #dc3545;
+        }
+
+        .myfont {
+            font-weight: 400;
+            font-size: .800rem;
+        }
+    </style>
+
+    <link href="./CSS/blog.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <!-- <%--Header Section--%> -->
+        <header class="blog-header py-3 " id="myHeader">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+
+                <div class="col-5 text-left">
+                    <a class="blog-header-logo text-dark" href="#"
+                        style="font-family: 'Grand Hotel', cursive;">Blog.it</a>
+                </div>
+                <div class="col-6 d-flex justify-content-end align-items-center">
+
+                    <a id="back_btn" class="btn btn-sm btn-outline-dark m-2"
+                        style="font-size: .800rem; font-weight: 400;" href="./webform2.html">Go Back</a>
+
+                    <div id="dropdown" class="dropdown pl-2">
+                        <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <img src="images/person.svg" id="prof_image1" height="38" width="38"
+                                class="img-thumbnail rounded-circle border-0 p-0 m-2" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mt-3"
+                            style="width: 250px; overflow-y: no-content;" aria-labelledby="dropdownMenuLink">
+                            <div class="row my-2" style="padding-left: 1.5rem;">
+                                <div class="col-auto">
+                                    <img src="images/person.svg" id="prof_image2" height="42" width="42"
+                                        class="img-thumbnail rounded-circle border-0 p-0 m-0" />
+                                </div>
+                                <div class="col-auto pl-0 py-auto" style="font-size: .900rem;">
+                                    <h6 class="mb-0" id="u_name">Username</h6>
+                                    <p class="mb-0" id="u_mail">Email</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider my-3"></div>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;"
+                                href="./account.html">Profile</a>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;"
+                                href="./Create-blog-page.html">New post</a>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;"
+                                href="./view-personal-blogs.html">Posts</a>
+                            <div class="dropdown-divider my-3"></div>
+                            <button role="button" class="dropdown-item my-1"
+                                style="font-weight: 500; font-size: .800rem;" onclick="signout()">
+                                Sign out
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- <%--Main section--%> -->
+        <h3 class="mt-4 text-dark" style="font-family: 'Yanone Kaffeesatz', sans-serif;">Write your blog</h3>
+        <div class="jumbotron py-xl-5 px-xl-5 rounded-0" style="background-color: rgba(253, 218, 195, 0.5);">
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Blog Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="colFormLabel1" placeholder="Title" />
+                    <div class="invalid-feedback">
+                        Please choose a title.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Title Description</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="colFormLabel2" placeholder="Description (optional)" />
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Select image</label>
+                <div class="col-sm-10">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile" accept="image/*" />
+                        <label class="custom-file-label" for="customFile" style="overflow: hidden;">Choose file</label>
+                        <div class="invalid-feedback">
+                            Please choose a image.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Blog content</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div class="invalid-feedback">
+                        Please provide some content.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>Choose...</option>
+                        <option value="1">Finance</option>
+                        <option value="2">Sports</option>
+                        <option value="3">Business</option>
+                        <option value="4">Food</option>
+                        <option value="5">Writing</option>
+                        <option value="6">Cars</option>
+                        <option value="7">Music</option>
+                        <option value="8">Games</option>
+                        <option value="9">Movies</option>
+                        <option value="10">Books</option>
+                        <option value="11">Entertainment</option>
+                        <option value="12">Fashion</option>
+                        <option value="13">Lifestyle</option>
+                        <option value="14">Politics</option>
+                        <option value="15">Parenting</option>
+                        <option value="16">Pets</option>
+                        <option value="17">Nature</option>
+                        <option value="18">Community</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please choose a category.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <button type="button" class="btn my-btn px-4 myfont mt-4" onclick="upload()" id="upload_btn"
+                data-toggle="tooltip" data-placement="top" title="Upload your blog">
+                Publish Blog
+            </button>
+            <button type="button" class="btn my-outline-btn px-4 myfont ml-2 mt-4" onclick="cancel()"
+                data-toggle="tooltip" data-placement="top" title="Cancel">
+                Cancel
+            </button>
+
+
+            <br />
+            <br />
+
+            <div class="progress rounded-0" style="height: 1px;">
+                <div id="progress_bar" class="progress-bar" role="progressbar" style="width: 0%; visibility: hidden;"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <%--        Footer Section--%> -->
+        <hr class="mt-5 mb-0" />
+        <footer class="footer p-0" id="footer-main">
+            <div class="container mb-3">
+                <div class="py-4">
+                    <div class="row align-items-md-center">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="d-flex align-items-center">
+                                <a class="nav-link text-dark pr-1">
+                                    <i class="fab fa-bootstrap" style="font-size: 18px"></i>
+                                    <span class="text-sm mb-0"
+                                        style="font-size: .850rem; font-weight: 500;">Blog.it</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
+                            <ul class="nav justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#"
+                                        style="font-size: .850rem; font-weight: 500;">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#"
+                                        style="font-size: .850rem; font-weight: 500;">Terms</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#"
+                                        style="font-size: .850rem; font-weight: 500;">Privacy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://www.instagram.com/webpixelsofficial"
+                                        target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://github.com/webpixels" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark" href="https://www.facebook.com/webpixels"
+                                        target="_blank">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark" href="https://www.facebook.com/webpixels"
+                                        target="_blank">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCp7eC7xCncnKfPSBJuw9tRk7ntl0KYctI",
+            authDomain: "webproject13-4fcf7.firebaseapp.com",
+            databaseURL: "https://webproject13-4fcf7.firebaseio.com",
+            projectId: "webproject13-4fcf7",
+            storageBucket: "webproject13-4fcf7.appspot.com",
+            messagingSenderId: "82782956213",
+            appId: "1:82782956213:web:12babc30874b6b7dc26cfc",
+            measurementId: "G-YK0NJG4LMZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <!-- <%--Selected file name--%> -->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        $('.custom-file-input').on('change', function () {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).siblings('.custom-file-label').addClass('selected').html(fileName);
+        });
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+
+        var img = document.getElementById('customFile');
+        var file_img;
+        var up_btn = document.getElementById('upload_btn');
+
+        img.addEventListener('change', function (e) {
+            file_img = e.target.files[0];
+        });
+
+        function upload() {
+            var at = document.getElementById('colFormLabel1').value;
+            if (at.length < 1) {
+                //window.alert("Title field can't be empty!");
+                document.getElementById('colFormLabel1').setAttribute("class", "form-control is-invalid");
+                return false;
+            }
+            else {
+                document.getElementById('colFormLabel1').setAttribute("class", "form-control");
+            }
+
+            if (!file_img) {
+                //window.alert("Please select image to continue.");
+                document.getElementById('customFile').setAttribute("class", "form-control is-invalid");
+                return false;
+            }
+            else {
+                document.getElementById('customFile').setAttribute("class", "form-control");
+            }
+
+            var ac = document.getElementById('exampleFormControlTextarea1').value;
+            if (ac.length < 1) {
+                //window.alert("Blog Content can't be empty!");
+                document.getElementById('exampleFormControlTextarea1').setAttribute("class", "form-control is-invalid");
+                return false;
+            }
+            else {
+                document.getElementById('exampleFormControlTextarea1').setAttribute("class", "form-control");
+            }
+
+            var sel = document.getElementById("inputGroupSelect01");
+            var sel_text = sel.options[sel.selectedIndex].text;
+
+            if (sel_text == "Choose...") {
+                // window.alert("Please select a category");
+                document.getElementById("inputGroupSelect01").setAttribute("class", "form-control is-invalid");
+                return false;
+            }
+            else {
+                document.getElementById("inputGroupSelect01").setAttribute("class", "form-control");
+            }
+
+
+            var storageref = firebase.storage().ref('images/' + file_img.name);
+
+            var task = storageref.put(file_img);
+
+            task.on('state_changed', function progress(snapshot) {
+                var progress = parseInt((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+                var progress_bar = document.getElementById('progress_bar');
+                progress_bar.style.visibility = "visible";
+                progress_bar.style.width = progress + "%";
+                progress_bar.setAttribute("aria-valuenow", progress);
+                // console.log('Upload is ' + progress + '% done');
+                //progress_bar.innerHTML = progress + "%";
+
+
+            }, function error(err) {
+                window.alert("Error:" + err);
+
+            }, function complete() {
+
+                task.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+
+                    var title = document.getElementById('colFormLabel1').value;
+                    var title_desc = document.getElementById('colFormLabel2').value;
+                    var content = document.getElementById('exampleFormControlTextarea1').value;
+
+                    var counter_reff = firebase.database().ref("counter");
+                    counter_reff.once("value", function (snapshot) {
+                        var reff = firebase.database().ref("blogs");
+                        var a = reff.push();
+
+
+                        a.child("name").set(file_img.name);
+                        a.child("img_url").set(downloadURL);
+                        var today = new Date();
+
+                        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+                            "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
+                        var date = monthNames[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+                        // var time = today.getHours() + ":" + today.getMinutes();
+
+                        var userId = firebase.auth().currentUser.uid;
+                        a.child("userId").set(userId);
+
+                        var blog_counter = firebase.database().ref("users").child(userId);
+                        var b_cntr;
+                        blog_counter.once("value", function (snapshot) {
+                            if (snapshot.val().n_blog == null) {
+                                blog_counter.child("n_blog").set(1);
+                            }
+                            else {
+                                b_cntr = snapshot.val().n_blog;
+                                b_cntr = b_cntr + 1;
+                                blog_counter.child("n_blog").set(b_cntr);
+                            }
+
+                        });
+
+
+                        a.child("date").set(date);
+                        //a.child("time").set(time);
+                        a.child("title").set(title);
+                        a.child("counter").set(snapshot.val());
+                        a.child("desc").set(title_desc);
+                        a.child("category").set(sel_text);
+                        a.child("content").set(content).then(function () {
+
+                            window.alert("File upload success.");
+                            var counter_reff1 = firebase.database().ref("counter");
+                            counter_reff1.set(snapshot.val() - 1)
+
+                            document.getElementById('colFormLabel1').value = "";
+                            document.getElementById('colFormLabel2').value = "";
+                            document.getElementById('exampleFormControlTextarea1').value = "";
+                            document.getElementById('inputGroupSelect01').value = "Choose...";
+                            progress_bar.style.visibility = "hidden";
+
+                        }).catch(function (error) {
+
+                            window.alert("Error: " + error);
+                        });
+                    });
+                });
+            });
+        }
+
+        function cancel() {
+            window.location.href = "webform2.html";
+        }
+
+    </script>
+
+    <script>
+        //profile image if user is logged in
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                var userId = firebase.auth().currentUser.uid;
+                var ref = firebase.database().ref('users').child(userId);
+
+                ref.on('value', function (user) {
+                    if (user.exists()) {
+                        if (user.val().image != null) {
+                            document.getElementById("prof_image1").src = user.val().image;
+                            document.getElementById("prof_image2").src = user.val().image;
+                        }
+                        if (user.val().username != null) {
+                            document.getElementById("u_name").innerHTML = user.val().username;
+                            document.getElementById("u_mail").innerHTML = user.val().email;
+                        }
+                    }
+                    else {
+
+                        //window.alert('something went wrong');
+                    }
+                });
+            } else {
+                // No user is signed in.
+                //window.alert("Something Went Wrong!");
+            }
+        });
+    </script>
+
+    <script>
+        //signout
+        function signout() {
+            firebase.auth().signOut().then(function () {
+                // Sign-out successful.
+                window.location.href = 'index.html';
+            }).catch(function (error) {
+                // An error happened.
+                window.alert("Error:" + error);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

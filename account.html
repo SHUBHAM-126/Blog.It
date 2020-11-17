@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="h-100">
+<head runat="server">
+    <title>Account</title>
+    <script src="https://kit.fontawesome.com/ce4c0eef9f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ce4c0eef9f.js" crossorigin="anonymous"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- <%--header font--%> -->
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1.5rem;
+        }
+
+        .avatar-lg {
+            width: 90px;
+            height: 90px;
+            font-size: 1.25rem;
+        }
+
+        .myfont {
+            font-weight: 400;
+            font-size: .95rem;
+        }
+
+        .btnfont {
+            font-size: .800rem;
+        }
+        /*input file css*/
+        .file-input {
+            display: inline-block;
+            text-align: left;
+            background: #fff;
+            padding: 8px;
+            padding-left: 0px;
+            font-size: .8rem;
+            font-weight: 400;
+            position: relative;
+            border-radius: 3px;
+        }
+
+            .file-input > [type='file'] {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                z-index: 10;
+                cursor: pointer;
+            }
+
+            .file-input > .button {
+                display: inline-block;
+                cursor: pointer;
+                background: #eee;
+                padding: 8px 16px;
+                border-radius: 2px;
+                margin-right: 8px;
+            }
+
+            .file-input:hover > .button {
+                background: dodgerblue;
+                color: white;
+            }
+
+            .file-input > .label {
+                color: #333;
+                white-space: nowrap;
+                opacity: .3;
+            }
+
+            .file-input.-chosen > .label {
+                opacity: 1;
+            }
+
+        .dropdown-item:hover {
+            color: #007bff;
+            background-color: #fff;
+        }
+
+        .dropdown-item:focus {
+            outline: none;
+        }
+
+        #back_btn:hover {
+            background-color: #fff;
+            color: #000000;
+        }
+
+        .mydelbtn:hover {
+            background-color: #fff;
+            color: #343a40;
+        }
+
+        .myspinner {
+            height: 1.5rem;
+            width: 1.5rem;
+            border-width: .2em;
+            color: black;
+        }
+    </style>
+
+    <link href="./CSS/blog.css" rel="stylesheet" />
+    <link href="./CSS/stylesheet1.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./CSS/mob-account.css">
+</head>
+<body>
+    <div class="container">
+        <!-- <%--Header Section--%> -->
+        <header class="blog-header py-3 " id="myHeader">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+
+                <div class="col-5 text-left">
+                    <a class="blog-header-logo text-dark" style="font-family: 'Grand Hotel', cursive;" href="#">Blog.it</a>
+                </div>
+                <div class="col-6 d-flex justify-content-end align-items-center">
+
+                    <a id="back_btn" class="btn btn-sm btn-outline-dark m-2" style="font-size: .800rem; font-weight: 400;" href="./webform2.html">Go Back</a>
+
+                    <div id="dropdown" class="dropdown pl-2">
+                        <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="images/person.svg" id="prof_image1" height="38" width="38" class="img-thumbnail rounded-circle border-0 p-0 m-2" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mt-3" style="width: 250px; overflow-y: no-content;" aria-labelledby="dropdownMenuLink">
+                            <div class="row my-2" style="padding-left: 1.5rem;">
+                                <div class="col-auto">
+                                    <img src="images/person.svg" id="prof_image2" height="42" width="42" class="img-thumbnail rounded-circle border-0 p-0 m-0" />
+                                </div>
+                                <div class="col-auto pl-0 py-auto" style="font-size: .900rem;">
+                                    <h6 class="mb-0" id="u_name">Username</h6>
+                                    <p class="mb-0" id="u_mail">Email</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider my-3"></div>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;" href="./account.html">Profile</a>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;" href="./Create-blog-page.html">New post</a>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;" href="./view-personal-blogs.html">Posts</a>
+                            <div class="dropdown-divider my-3"></div>
+                            <button role="button" class="dropdown-item my-1" style="font-weight: 500; font-size: .800rem;" onclick="signout()">
+                                Sign out
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <!-- <%--profile--%> -->
+        <div id="main-div" class="row justify-content-center">
+            <div id="div-1" class="col-lg-3 ">
+                <ul id="tabs" class="nav nav-tabs flex-lg-column" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Your Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="password-tab" data-toggle="tab" href="#password" role="tab" aria-controls="password" aria-selected="false">Password</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="notifications-tab" data-toggle="tab" href="#email" role="tab" aria-controls="notifications" aria-selected="false">Update Email</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="billing-tab" data-toggle="tab" href="#delete" role="tab" aria-controls="billing" aria-selected="false">Delete Account</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="col-xl-8 col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="tab-content">
+                            <!-- <%--profile tab--%> -->
+                            <div class="tab-pane fade show active" role="tabpanel" id="profile">
+
+                                <div class="form-group row align-items-center">
+                                    <div class="col-3">
+                                        <img id="prof_image" src="images/person.svg" class="img-thumbnail rounded-circle border-0 p-0 avatar-lg" />
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class='file-input'>
+                                            <input type='file' id="customFile" accept="image/*" />
+                                            <span class='button'>Choose</span>
+                                            <span class='label' data-js-label>No file selected</label>
+                                               
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-3 align-content-center">
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" id="upload_btn" class="btn my-btn btnfont px-3" onclick="upload()" disabled>Upload</button>
+                                    </div>
+
+                                </div>
+                                <div id="progress_div" class="progress mt-3" style="height: 1px; visibility: hidden;">
+                                    <div class="progress-bar" id="progress_bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+
+                                <hr class="mt-3 mb-4" />
+                                <!--end of avatar-->
+                                <form class="myfont">
+                                    <div class="form-group row align-items-center mt-2">
+                                        <label class="col-3 my-label">First Name</label>
+                                        <div class="col pl-0">
+                                            <input id="firstname" type="text" placeholder="First name" name="profile-first-name" class="form-control myfont my-inp-size" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-3 my-label">Last Name</label>
+                                        <div class="col pl-0">
+                                            <input id="lastname" type="text" placeholder="Last name" name="profile-last-name" class="form-control myfont my-inp-size" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-3 my-label">User Name</label>
+                                        <div class="col pl-0">
+                                            <input id="username_input" type="text" placeholder="Enter your User Name" name="profile-email" class="form-control myfont my-inp-size" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-3 my-label">Location</label>
+                                        <div class="col pl-0">
+                                            <input id="location" type="text" placeholder="Enter your location" name="profile-location" class="form-control myfont my-inp-size" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-3 my-label">Bio</label>
+                                        <div class="col pl-0">
+                                            <textarea id="bio" placeholder="Tell us a little about yourself" name="profile-bio" class="form-control myfont my-inp-size" rows="4"></textarea>
+                                            <small style="font-weight: 500;">This will be displayed on your public profile</small>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" onclick="save_changes()" id="save" class="btn my-btn btnfont">
+                                        Save Changes</button>
+
+                                </form>
+                            </div>
+
+                            <!-- <%--update email tab--%> -->
+                            <div class="tab-pane fade" role="tabpanel" id="email">
+                                <div class="card-body pt-0 myfont">
+                                    <h5 class="card-title mb-4">Update your email</h5>
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-3 my-label">E-mail</label>
+                                        <div class="col">
+                                            <input id="new_email" type="email" placeholder="Enter new email" name="profile-location" class="form-control myfont my-inp-size" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <button class="btn my-btn btnfont px-3" type="button" onclick="update_email()">Update</button>
+                                        </div>
+                                        <div class="col-auto my-auto ml-0">
+                                            <div class="spinner-border myspinner" id="spinner1" style="visibility: hidden;" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- <%--password tab--%> -->
+                            <div class="tab-pane fade" role="tabpanel" id="password">
+                                <div class="card-body pt-0 myfont">
+                                    <h5 class="card-title mb-4">Reset your password</h5>
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-3 my-label">Current Password</label>
+                                        <div class="col">
+                                            <input id="curr_pass" type="password" placeholder="Enter Current Password" name="profile-location" class="form-control myfont my-inp-size" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row align-items-center">
+                                        <label class="col-3 my-label">New Password</label>
+                                        <div class="col">
+                                            <input id="new_pass" type="password" placeholder="Enter New Password" name="profile-location" class="form-control myfont my-inp-size" />
+                                        </div>
+                                    </div>
+                                    <button onclick="reset_pass()" class="btn my-btn btnfont">Reset Password</button>
+                                </div>
+                            </div>
+
+
+
+                            <!-- <%--delete account tab--%> -->
+                            <div class="tab-pane fade" role="tabpanel" id="delete">
+                                <div class="card-body pt-0 myfont">
+                                    <h5 class="card-title mb-4">Delete account</h5>
+                                    <p style="font-size: .950rem;">
+                                        Permanently delete your account. You will be no longer able to access your account.
+                                    </p>
+                                    <button type="button" class="btn btn-danger btnfont mt-3" data-toggle="modal" data-target="#staticBackdrop">Delete account</button>
+
+                                    <!-- Modal delete account -->
+                                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title ml-5" id="staticBackdropLabel">Delete account</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body mx-5">
+                                                    <p style="font-size: .950rem;">Are you sure you want to delete your account?</p>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-danger btnfont" onclick="delete_account()">Delete</button>
+                                                    <button type="button" class="btn btn-outline-dark mydelbtn mr-5 btnfont" data-dismiss="modal">Cancel</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <%--        Footer Section--%> -->
+        <hr class="mt-5 mb-0" />
+        <footer class="footer p-0" id="footer-main">
+            <div class="container mb-3">
+                <div class="py-4">
+                    <div class="row align-items-md-center">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="d-flex align-items-center">
+                                <a class="nav-link text-dark pr-1">
+                                    <i class="fab fa-bootstrap" style="font-size: 18px"></i>
+                                    <span class="text-sm mb-0" style="font-size: .850rem; font-weight: 500;">Blog.it</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
+                            <ul class="nav justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#" style="font-size: .850rem; font-weight: 500;">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#" style="font-size: .850rem; font-weight: 500;">Terms</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#" style="font-size: .850rem; font-weight: 500;">Privacy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://www.instagram.com/webpixelsofficial" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://github.com/webpixels" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark" href="https://www.facebook.com/webpixels" target="_blank">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark" href="https://www.facebook.com/webpixels" target="_blank">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <script>
+
+        var inputs = document.querySelectorAll('.file-input')
+
+        for (var i = 0, len = inputs.length; i < len; i++) {
+            customInput(inputs[i])
+        }
+
+        function customInput(el) {
+            const fileInput = el.querySelector('[type="file"]')
+            const label = el.querySelector('[data-js-label]')
+
+            fileInput.onchange =
+            fileInput.onmouseout = function () {
+                if (!fileInput.value) return
+
+                var value = fileInput.value.replace(/^.*[\\\/]/, '')
+                el.className += ' -chosen'
+                label.innerText = value
+            }
+        }
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCp7eC7xCncnKfPSBJuw9tRk7ntl0KYctI",
+            authDomain: "webproject13-4fcf7.firebaseapp.com",
+            databaseURL: "https://webproject13-4fcf7.firebaseio.com",
+            projectId: "webproject13-4fcf7",
+            storageBucket: "webproject13-4fcf7.appspot.com",
+            messagingSenderId: "82782956213",
+            appId: "1:82782956213:web:12babc30874b6b7dc26cfc",
+            measurementId: "G-YK0NJG4LMZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+
+    <script>
+        //retrieving user's info.
+     
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                console.log('Authstate called..');
+                var user_ref = firebase.database().ref().child("users").child(user.uid);
+                user_ref.on("value", function (user) {
+                    //setting text to input text
+                    //window.alert(user.val().username);
+
+                    if (user.val().firstname != null) {
+                        document.getElementById("firstname").setAttribute('value', user.val().firstname);
+                        document.getElementById("firstname").style.color = "black";
+                    }
+
+                    if (user.val().lastname != null) {
+                        document.getElementById("lastname").setAttribute('value', user.val().lastname);
+                        document.getElementById("lastname").style.color = "black";
+                    }
+
+                    if (user.val().username != null) {
+                        document.getElementById("username_input").setAttribute('value', user.val().username);
+                        document.getElementById("username_input").style.color = "black";
+                    }
+
+                    if (user.val().location != null) {
+                        document.getElementById("location").setAttribute('value', user.val().location);
+                        document.getElementById("location").style.color = "black";
+                    }
+
+                    if (user.val().bio != null) {
+                        document.getElementById("bio").value = user.val().bio;
+                        document.getElementById("bio").style.color = "black";
+                    }
+                    if (user.val().image != null) {
+                        document.getElementById("prof_image").src = user.val().image;
+                    }
+                });
+
+            } else {
+                //window.alert("Something went Wrong!");
+            }
+        });
+
+        //uploading image
+        //getting image
+        var img = document.getElementById('customFile');
+        var file_img;
+
+        img.addEventListener('change', function (e) {
+            file_img = e.target.files[0];
+            document.getElementById("upload_btn").disabled = false;
+        });
+
+        function upload() {
+            //if the image is selected then uploading it..
+            if (file_img != null) {
+                //deleting previous profile image
+                var user_id = firebase.auth().currentUser.uid;
+                var user_ref = firebase.database().ref().child("users").child(user_id);
+                user_ref.once("value", function (user) {
+                    if (user.val().image_name != null) {
+                        var del_ref = firebase.storage().ref('profiles/' + user.val().image_name);
+                        //delete the file
+                        del_ref.delete().then(function () {
+                        }).catch(function (error) {
+                            // Uh-oh, an error occurred!
+                            window.alert("Error:", error);
+                        });
+                    }
+                    else {
+                        //window.alert("Not found");
+                    }
+                });
+
+                //storage ref for image
+                var storageref = firebase.storage().ref('profiles/' + file_img.name);
+
+                var task = storageref.put(file_img);
+
+                task.on('state_changed', function progress(snapshot) {
+                    var progress = parseInt((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
+                    var progress_bar = document.getElementById('progress_bar');
+                    document.getElementById('progress_div').style.visibility = "visible";
+                    progress_bar.style.width = progress + "%";
+                    progress_bar.setAttribute("aria-valuenow", progress);
+
+                }, function error(err) {
+                    window.alert("Error:" + err);
+
+                }, function complete() {
+                    task.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+
+                        var user_id = firebase.auth().currentUser.uid;
+                        var user_ref = firebase.database().ref().child("users").child(user_id);
+
+                        user_ref.child("image_name").set(file_img.name);
+                        user_ref.child("image").set(downloadURL).then(function () {
+
+                            window.alert("Profile Image Uploaded successfully.");
+
+                            document.getElementById('progress_div').style.visibility = "hidden";
+                        });
+                        ;
+                    });
+
+                });
+
+            }
+            else {
+                window.alert("No file selected!");
+            }
+        }
+
+        //saving changes
+
+        function save_changes() {
+            var u_name = document.getElementById("username_input").value;
+            if (u_name.length < 1) {
+                window.alert("User Name field can't be empty!");
+                return false;
+            }
+
+
+            var user_id = firebase.auth().currentUser.uid;
+            var user_ref = firebase.database().ref().child("users").child(user_id);
+
+            var f_name = document.getElementById("firstname").value;
+            var l_name = document.getElementById("lastname").value;
+            var loc = document.getElementById("location").value;
+            var bio = document.getElementById("bio").value;
+
+
+            user_ref.child("firstname").set(f_name);
+            user_ref.child("lastname").set(l_name);
+            user_ref.child("username").set(u_name);
+            user_ref.child("location").set(loc);
+            user_ref.child("bio").set(bio).then(function () {
+
+                window.alert("Changes Saved.");
+
+            }).catch(function (error) {
+
+                window.alert("Error: " + error);
+
+            });
+
+        }
+
+    </script>
+
+
+    <script>
+        //reset password
+        function reset_pass() {
+            var user = firebase.auth().currentUser;
+            var email = user.email;
+            var password = document.getElementById("curr_pass").value;
+            var credential = firebase.auth.EmailAuthProvider.credential(email, password);
+            var newPassword = document.getElementById("new_pass").value;
+
+            if (password.length < 1) {
+                window.alert("Enter your current password!");
+                return false;
+            }
+            if (newPassword.length < 1) {
+                window.alert("Enter your new password!");
+                return false;
+            }
+
+            user.reauthenticateWithCredential(credential).then(function () {
+                user.updatePassword(newPassword).then(function () {
+                    // Update successful.
+                    window.alert("Password changed Successfully.")
+                }).catch(function (error) {
+                    // An error happened.
+                    window.alert(error);
+                });
+            }).catch(function (error) {
+                window.alert(error);
+            });
+
+        }
+    </script>
+
+    <script>
+        //update email
+        function update_email() {
+            var user = firebase.auth().currentUser;
+            var new_email = document.getElementById("new_email").value;
+            if (new_email.length < 1) {
+                window.alert("Please enter your new email address!");
+                return false;
+            }
+
+            document.getElementById("spinner1").style.visibility = "visible";
+            user.updateEmail(new_email).then(function () {
+                var user_ref = firebase.database().ref().child("users").child(user.uid);
+                user_ref.child("email").set(new_email).then(function () {
+                    document.getElementById("spinner1").style.visibility = "hidden";
+                    window.alert("Email updated successfully.");
+
+                });
+
+            }).catch(function (error) {
+                document.getElementById("spinner1").style.visibility = "hidden";
+                window.alert(error);
+            });
+        }
+    </script>
+
+
+
+    <script>
+        //delete account
+        function delete_account() {
+            var user = firebase.auth().currentUser;
+
+            user.delete().then(function () {
+                // User deleted.
+                window.alert("Your account removed successfully.");
+                window.location.href = "WebForm1.aspx";
+            }).catch(function (error) {
+                // An error happened.
+                window.alert(error);
+            });
+        }
+    </script>
+
+    <script>
+        //profile image if user is logged in
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                var userId = firebase.auth().currentUser.uid;
+                var ref = firebase.database().ref('users').child(userId);
+
+                ref.on('value', function (user) {
+                    if (user.exists()) {
+                        if (user.val().image != null) {
+                            document.getElementById("prof_image1").src = user.val().image;
+                            document.getElementById("prof_image2").src = user.val().image;
+                        }
+                        if (user.val().username != null) {
+                            document.getElementById("u_name").innerHTML = user.val().username;
+                            document.getElementById("u_mail").innerHTML = user.val().email;
+                        }
+
+                    }
+                    else {
+
+                        //window.alert('something went wrong');
+                    }
+                });
+
+            } else {
+                // No user is signed in.
+                //window.alert("Something Went Wrong!");
+            }
+        });
+    </script>
+
+    <script>
+        //signout
+        function signout() {
+            firebase.auth().signOut().then(function () {
+                // Sign-out successful.
+
+                window.location.href = 'index.html';
+
+
+            }).catch(function (error) {
+                // An error happened.
+                window.alert("Error:" + error);
+            });
+
+        }
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>All blogs</title>
+
+    <script src="https://kit.fontawesome.com/ce4c0eef9f.js" crossorigin="anonymous"></script>
+    <!-- <%--new font--%> -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        /*p tag truncate*/
+
+        .demo-1 {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 350px;
+        }
+
+        input[type=text]:focus {
+            box-shadow: none;
+            border: none;
+        }
+
+        .dropdown-item:hover {
+            color: #007bff;
+            background-color: #fff;
+        }
+
+        .dropdown-item:focus {
+            outline: none;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: #fff;
+            color: #000000;
+        }
+
+        .btn-outline-dark {
+            font-size: .800rem;
+        }
+
+        .myspinner {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-width: .16em;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">   
+
+    <link href="./CSS/blog.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./CSS/mob-view-all.css" >
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- <%--Header Section--%> -->
+        <header class="blog-header py-3" id="myHeader">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+
+                <div class="col-5 text-left">
+                    <a class="blog-header-logo text-dark" style="font-family: 'Grand Hotel', cursive;"
+                        href="#">Blog.it</a>
+                </div>
+                <div class="col-6 d-flex justify-content-end align-items-center">
+
+                    <a id="back_btn" class="btn btn-sm btn-outline-dark m-2" style="font-weight: 400;"
+                        href="./webform2.html">Go Back</a>
+
+                    <div id="dropdown" class="dropdown pl-2">
+                        <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <img src="images/person.svg" id="prof_image1" height="38" width="38"
+                                class="img-thumbnail rounded-circle border-0 p-0 m-2" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mt-3"
+                            style="width: 250px; overflow-y: no-content;" aria-labelledby="dropdownMenuLink">
+                            <div class="row my-2" style="padding-left: 1.5rem;">
+                                <div class="col-auto">
+                                    <img src="images/person.svg" id="prof_image2" height="42" width="42"
+                                        class="img-thumbnail rounded-circle border-0 p-0 m-0" />
+                                </div>
+                                <div class="col-auto pl-0 py-auto" style="font-size: .900rem;">
+                                    <h6 class="mb-0" id="u_name">Username</h6>
+                                    <p class="mb-0" id="u_mail">Email</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider my-3"></div>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;"
+                                href="./account.html">Profile</a>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;"
+                                href="./Create-blog-page.html">New post</a>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;"
+                                href="./view-personal-blogs.html">Posts</a>
+                            <div class="dropdown-divider my-3"></div>
+                            <button role="button" class="dropdown-item my-1"
+                                style="font-weight: 500; font-size: .800rem;" onclick="signout()">
+                                Sign out
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- <%--section search--%> -->
+        <div id="search-section" class="container">
+            <div id="search-div">
+                <h3>Latest blogs</h3>
+                <div class="form-inline">
+                    <input id="search_text" class="form-control form-control-sm mr-sm-2" list="suggestions"
+                        style="border-color: #343a40;" type="search" placeholder="Category" aria-label="Search" />
+                    <datalist id="suggestions">
+                        <option value="Finance"></option>
+                        <option value="Sports"></option>
+                        <option value="Business"></option>
+                        <option value="Food"></option>
+                        <option value="Writing"></option>
+                        <option value="Cars"></option>
+                        <option value="Music"></option>
+                        <option value="Games"></option>
+                        <option value="Movies"></option>
+                        <option value="Books"></option>
+                        <option value="Entertainment"></option>
+                        <option value="Fashion"></option>
+                        <option value="Lifestyle"></option>
+                        <option value="Politics"></option>
+                        <option value="Parenting"></option>
+                        <option value="Pets"></option>
+                        <option value="Nature"></option>
+                        <option value="Community"></option>
+                    </datalist>
+                    <button id="search_btn" class="btn btn-sm btn-dark my-2 my-sm-0" type="button">
+                        Search</button>
+                </div>
+            </div>
+
+        </div>
+
+        <svg class="bi bi-at" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"></svg>
+        <!-- <%-- View blog section--%> -->
+        <div class="d-flex align-items-center" id="spinner">
+            <strong>Loading...</strong>
+            <div class="spinner-border ml-auto myspinner" role="status" aria-hidden="true"></div>
+        </div>
+
+
+        <div id="no_match" style="display: none;">
+            <p class="text-center">Sorry, No match found!</p>
+        </div>
+
+
+        <div class="row row-cols-1 row-cols-md-3 mb-5" id="blog_section">
+        </div>
+
+
+
+        <!-- <%--        Footer Section--%> -->
+        <hr class="mt-5 mb-0" />
+        <footer class="footer p-0" id="footer-main">
+            <div class="container mb-3">
+                <div class="py-4">
+                    <div class="row align-items-md-center">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="d-flex align-items-center">
+                                <a class="nav-link text-dark pr-1">
+                                    <i class="fab fa-bootstrap" style="font-size: 18px"></i>
+                                    <span class="text-sm mb-0"
+                                        style="font-size: .850rem; font-weight: 500;">Blog.it</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
+                            <ul class="nav justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#"
+                                        style="font-size: .850rem; font-weight: 500;">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#"
+                                        style="font-size: .850rem; font-weight: 500;">Terms</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#"
+                                        style="font-size: .850rem; font-weight: 500;">Privacy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://www.instagram.com/webpixelsofficial"
+                                        target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://github.com/webpixels" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark" href="https://www.facebook.com/webpixels"
+                                        target="_blank">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark" href="https://www.facebook.com/webpixels"
+                                        target="_blank">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCp7eC7xCncnKfPSBJuw9tRk7ntl0KYctI",
+            authDomain: "webproject13-4fcf7.firebaseapp.com",
+            databaseURL: "https://webproject13-4fcf7.firebaseio.com",
+            projectId: "webproject13-4fcf7",
+            storageBucket: "webproject13-4fcf7.appspot.com",
+            messagingSenderId: "82782956213",
+            appId: "1:82782956213:web:12babc30874b6b7dc26cfc",
+            measurementId: "G-YK0NJG4LMZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <script>
+        //profile image if user is logged in
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                var userId = firebase.auth().currentUser.uid;
+                var ref = firebase.database().ref('users').child(userId);
+
+                ref.on('value', function (user) {
+                    if (user.exists()) {
+                        if (user.val().image != null) {
+                            document.getElementById("prof_image1").src = user.val().image;
+                            document.getElementById("prof_image2").src = user.val().image;
+                        }
+                        if (user.val().username != null) {
+                            document.getElementById("u_name").innerHTML = user.val().username;
+                            document.getElementById("u_mail").innerHTML = user.val().email;
+                        }
+                    }
+                    else {
+
+                        //window.alert('something went wrong');
+                    }
+                });
+            } else {
+                // No user is signed in.
+                //window.alert("Something Went Wrong!");
+            }
+        });
+    </script>
+
+    <script>
+        //signout
+        function signout() {
+            firebase.auth().signOut().then(function () {
+                // Sign-out successful.
+                window.location.href = 'index.html';
+            }).catch(function (error) {
+                // An error happened.
+                window.alert("Error:" + error);
+            });
+        }
+    </script>
+
+    <script src="./JavaScript/retriving-all-blogs.js"></script>
+    <script src="./JavaScript/search-blog.js"></script>
+
+</body>
+
+</html>

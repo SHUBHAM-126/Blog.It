@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Your blogs</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel&display=swap" rel="stylesheet" />
+
+    <script src="https://kit.fontawesome.com/ce4c0eef9f.js" crossorigin="anonymous"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        input[type=text]:focus {
+            box-shadow: none;
+            border: none;
+        }
+
+        .dropdown-item:hover {
+            color: #007bff;
+            background-color: #fff;
+        }
+
+        .dropdown-item:focus {
+            outline: none;
+        }
+
+        #back_btn:hover {
+            background-color: #fff;
+            color: #000000;
+        }
+
+        .delete_btn:hover {
+            border-color: #dc3545;
+            background-color: #fff;
+            color: #dc3545;
+        }
+
+        .btn_my:hover {
+            background-color: #fff;
+            color: #000000;
+        }
+
+        .btn-outline-dark {
+            font-size: .800rem;
+        }
+    </style>
+
+    <link href="./CSS/blog.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- <%--Header Section--%> -->
+        <header class="blog-header py-3 " id="myHeader">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+
+                <div class="col-5 text-left">
+                    <a class="blog-header-logo text-dark" style="font-family: 'Grand Hotel', cursive;" href="#">Blog.it</a>
+                </div>
+                <div class="col-6 d-flex justify-content-end align-items-center">
+
+                    <a id="back_btn" class="btn btn-sm btn-outline-dark m-2" style="font-weight: 400;" href="./webform2.html">Go Back</a>
+
+                    <div id="dropdown" class="dropdown pl-2">
+                        <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="images/person.svg" id="prof_image1" height="38" width="38" class="img-thumbnail rounded-circle border-0 p-0 m-2" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mt-3" style="width: 250px; overflow-y: no-content;" aria-labelledby="dropdownMenuLink">
+                            <div class="row my-2" style="padding-left: 1.5rem;">
+                                <div class="col-auto">
+                                    <img src="images/person.svg" id="prof_image2" height="42" width="42" class="img-thumbnail rounded-circle border-0 p-0 m-0" />
+                                </div>
+                                <div class="col-auto pl-0 py-auto" style="font-size: .900rem;">
+                                    <h6 class="mb-0" id="u_name">Username</h6>
+                                    <p class="mb-0" id="u_mail">Email</p>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider my-3"></div>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;" href="./account.html">Profile</a>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;" href="./Create-blog-page.html">New post</a>
+                            <a class="dropdown-item my-2" style="font-weight: 500; font-size: .800rem;" href="./view-personal-blogs.html">Posts</a>
+                            <div class="dropdown-divider my-3"></div>
+                            <button role="button" class="dropdown-item my-1" style="font-weight: 500; font-size: .800rem;" onclick="signout()">
+                                Sign out
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <!-- <%-- View blog section--%> -->
+        <div class="row d-flex mt-5">
+            <div class="col-md-8 mx-auto">
+                <h2 id="blog_count" style="font-weight: 500;">Your stories</h2>
+            </div>
+        </div>
+
+        <h5 id="nostory" class="text-center my-5" style="font-size: 1.2rem; font-weight: 400; display: none;">You haven't posted any story yet.</h5>
+
+        <div class="row mt-4 mb-5" id="blog_section">
+        </div>
+
+        <!-- <%--        Footer Section--%> -->
+        <hr class="mt-5 mb-0" />
+        <footer class="footer p-0" id="footer-main">
+            <div class="container mb-3">
+                <div class="py-4">
+                    <div class="row align-items-md-center">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="d-flex align-items-center">
+                                <a class="nav-link text-dark pr-1">
+                                    <i class="fab fa-bootstrap" style="font-size: 18px"></i>
+                                    <span class="text-sm mb-0" style="font-size: .850rem; font-weight: 500;">Blog.it</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 mb-4 mb-sm-0">
+                            <ul class="nav justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#" style="font-size: .850rem; font-weight: 500;">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#" style="font-size: .850rem; font-weight: 500;">Terms</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="#" style="font-size: .850rem; font-weight: 500;">Privacy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://www.instagram.com/webpixelsofficial" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://github.com/webpixels" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark" href="https://www.facebook.com/webpixels" target="_blank">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark" href="https://www.facebook.com/webpixels" target="_blank">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCp7eC7xCncnKfPSBJuw9tRk7ntl0KYctI",
+            authDomain: "webproject13-4fcf7.firebaseapp.com",
+            databaseURL: "https://webproject13-4fcf7.firebaseio.com",
+            projectId: "webproject13-4fcf7",
+            storageBucket: "webproject13-4fcf7.appspot.com",
+            messagingSenderId: "82782956213",
+            appId: "1:82782956213:web:12babc30874b6b7dc26cfc",
+            measurementId: "G-YK0NJG4LMZ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+
+    <script>
+        //profile image if user is logged in
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                var userId = firebase.auth().currentUser.uid;
+                var ref = firebase.database().ref('users').child(userId);
+
+                ref.on('value', function (user) {
+                    if (user.exists()) {
+                        if (user.val().image != null) {
+                            document.getElementById("prof_image1").src = user.val().image;
+                            document.getElementById("prof_image2").src = user.val().image;
+                        }
+                        if (user.val().username != null) {
+                            document.getElementById("u_name").innerHTML = user.val().username;
+                            document.getElementById("u_mail").innerHTML = user.val().email;
+                        }
+                    }
+                    else {
+
+                        //window.alert('something went wrong');
+                    }
+                });
+            } else {
+                // No user is signed in.
+                //window.alert("Something Went Wrong!");
+            }
+        });
+    </script>
+
+    <script>
+        //signout
+        function signout() {
+            firebase.auth().signOut().then(function () {
+                // Sign-out successful.
+                window.location.href = 'index.html';
+            }).catch(function (error) {
+                // An error happened.
+                window.alert("Error:" + error);
+            });
+        }
+    </script>
+
+    <script>
+        //showing number of blogs
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                var userId = firebase.auth().currentUser.uid;
+                var blog_counter = firebase.database().ref("users").child(userId).child("n_blog");
+
+                blog_counter.on("value", function (snapshot) {
+                    if (snapshot.val() == null) {
+                        document.getElementById("blog_count").textContent = "Your stories 0";
+                        document.getElementById("nostory").style.display = "block";
+                    }
+                    else {
+                        document.getElementById("blog_count").textContent = "Your stories " + snapshot.val();
+                    }
+                    //window.alert(snapshot.val());
+
+                });
+            }
+        });
+        //var user = firebase.auth().currentUser;
+    </script>
+
+    <script>
+        //retriving blogs.
+        var dbBlogs = firebase.database().ref().child("blogs").orderByChild("counter");
+
+        dbBlogs.once("value", function (blogs) {
+
+            if (blogs.exists()) {
+                var blogshtml = "";
+                var user = firebase.auth().currentUser.uid;
+
+                blogs.forEach(function (singleblog) {
+                    if (user == singleblog.val().userId) {
+                        // window.alert(singleblog.key);
+                        //blogshtml += '<div class="col mb-4">';
+                        //blogshtml += '<div class="card rounded-0">';
+                        //blogshtml += '<img src="' + singleblog.val().img_url + '" class="card-img-top" alt="...">';
+                        //blogshtml += '<div class="card-body">';
+                        //blogshtml += '<h5 class="card-title">' + singleblog.val().title + '</h5>';
+                        //blogshtml += '<p class="card-subtitle mb-2 text-muted ">' + singleblog.val().desc + '</p>';
+                        //blogshtml += '<p class="card-text">' + singleblog.val().content + '</p>';                       
+                        //blogshtml += '<button type="button" class="btn btn-outline-dark rounded-pill btn-sm mr-1">Comments</button>';
+                        //blogshtml += '<button type="button" id="' + singleblog.val().title + '" onclick=" delete_blog()" class="btn btn-outline-dark rounded-pill btn-sm">';
+                        //blogshtml += 'Delete</button>';
+                        //blogshtml += '</div></div></div>';                      
+                        //document.getElementById("blog_section").innerHTML = blogshtml;
+
+                        //first div
+                        var x = document.createElement("DIV");
+                        var x_att = document.createAttribute("class");
+                        x_att.value = ("col-md-8 mx-auto mb-5");
+                        x.setAttributeNode(x_att);
+
+                        //second div
+                        var y = document.createElement("DIV");
+                        var y_att = document.createAttribute("class");
+                        y_att.value = ("card rounded-0 px-3");
+
+                        y.setAttributeNode(y_att);
+
+                        //image tag
+                        var image = document.createElement("IMG");
+                        image.setAttribute("src", singleblog.val().img_url);
+                        image.setAttribute("class", "card-img-top mb-0 rounded-0");
+
+                        //body div
+                        var b_div = document.createElement("DIV");
+                        b_div.setAttribute("class", "card-body");
+
+                        //body title
+                        var heading = document.createElement("H5");
+                        heading.setAttribute("class", "card-title mt-2 mb-0");
+                        heading.textContent = singleblog.val().title;
+
+                        //subtitle
+                        var para1 = document.createElement("P");
+                        para1.setAttribute("class", "card-subtitle mb-3 mt-0 text-muted");
+                        para1.textContent = singleblog.val().desc;
+
+                        //content
+                        var para2 = document.createElement("P");
+                        para2.setAttribute("class", "card-text my-3");
+                        para2.textContent = singleblog.val().content;
+                        para2.style.whiteSpace = "pre-line";
+
+                        //del button
+                        var button_del = document.createElement("button");
+                        button_del.innerHTML = "Delete";
+                        var att = document.createAttribute("class");
+                        att.value = ("btn btn-outline-dark btn-sm mr-2 delete_btn");
+                        button_del.setAttributeNode(att);
+
+                        //edit btn
+                        var edit_btn = document.createElement("button");
+                        edit_btn.innerHTML = "Edit";
+                        edit_btn.setAttribute("class", "btn btn-outline-dark btn_my btn-sm mr-1");
+
+                        edit_btn.addEventListener("click", function () {
+                            sessionStorage.setItem("blog_key", singleblog.key);
+                            window.location.href = "Edit-blog.html";
+
+                        });
+
+                        //comment button                      
+                        var cmt_btn = document.createElement("button");
+                        cmt_btn.innerHTML = "Comments";
+                        cmt_btn.setAttribute("class", "btn btn-outline-dark btn_my btn-sm mr-2");
+                        cmt_btn.setAttribute("type", "button");
+                        cmt_btn.setAttribute("data-toggle", "collapse");
+                        cmt_btn.setAttribute("data-target", "#" + singleblog.key);
+                        cmt_btn.setAttribute("aria-expanded", "false");
+                        cmt_btn.setAttribute("aria-controls", singleblog.key);
+
+                        //comment collapse         
+
+                        var collapse_div = document.createElement("DIV");
+                        collapse_div.setAttribute("class", "collapse");
+                        collapse_div.setAttribute("id", singleblog.key);
+
+                        var collapse_body_div = document.createElement("DIV");
+                        collapse_body_div.setAttribute("class", "card card-body border-0 bg-transparent");
+                        //collapse_body_div.textContent = " Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.";                       
+
+                        //comments count
+                        var cmt = document.createElement("H6");
+
+                        cmt.style.fontSize = "1rem";
+                        cmt.style.lineHeight = "1.5";
+
+                        //getting no of comments;
+                        var cmts_ref = firebase.database().ref().child("blogs").child(singleblog.key).child("comments");
+                        cmts_ref.on("value", function (cmts) {
+                            badge.innerHTML = cmts.numChildren();
+                            cmt.textContent = "Comments  " + cmts.numChildren();
+                        });
+
+                        //comments div
+
+                        var mf_div = document.createElement("DIV");
+                        mf_div.setAttribute("class", "row d-flex");
+
+                        //here goes comments
+                        var mf_div_cmt = document.createElement("DIV");
+                        mf_div_cmt.setAttribute("class", "col-8");
+                        //mf_div_cmt.setAttribute("id", singleblog.key);
+
+                        //input comment
+                        var cmt_div = document.createElement("DIV");
+                        cmt_div.setAttribute("class", "input-group input-group-lg input-group-merge border rounded");
+
+                        var cmt_div1 = document.createElement("DIV");
+                        cmt_div1.setAttribute("class", "input-group-prepend ");
+
+                        var pen_img_span = document.createElement("SPAN");
+                        pen_img_span.setAttribute("class", "input-group-text bg-white border-0 pr-2");
+
+                        var img_pen = document.createElement("IMG");
+                        img_pen.setAttribute("src", "images/pen.svg");
+
+                        var input_cmt = document.createElement("INPUT");
+                        input_cmt.setAttribute("type", "text");
+                        input_cmt.setAttribute("class", "form-control border-0 px-1 py-1");
+                        input_cmt.setAttribute("placeholder", "Write a comment...");
+                        input_cmt.style.fontSize = ".900rem";
+                        input_cmt.style.fontWeight = "400";
+                        input_cmt.setAttribute("id", "input_cmt");
+
+                        var cmt_btn_div = document.createElement("DIV");
+                        cmt_btn_div.setAttribute("class", "input-group-append bg-white");
+
+                        var cmt_btn_span = document.createElement("SPAN");
+                        cmt_btn_span.setAttribute("class", "input-group-text bg-white border-0 py-0 pl-2 pr-2");
+
+                        var post_btn = document.createElement("BUTTON");
+                        post_btn.setAttribute("type", "button");
+                        post_btn.setAttribute("class", "btn btn-sm btn-primary")
+                        post_btn.textContent = "Post";
+                        post_btn.disabled = "true";
+                        post_btn.setAttribute("id", "post_btn");
+                        post_btn.setAttribute("onclick", "check_input()");
+
+                        //enabling btn on input value
+                        input_cmt.oninput = function () {
+                            if (this.value.length > 0) {
+                                post_btn.disabled = false;
+                            }
+                            else {
+                                post_btn.disabled = true;
+                            }
+                        };
+
+                        //posting comment
+                        post_btn.addEventListener("click", function () {
+                            if (input_cmt.value == "") {
+                                window.alert("empty comment");
+                            }
+                            else {
+                                //window.alert(input_cmt.value);
+                                var cmt_reff = firebase.database().ref("blogs").child(singleblog.key).child("comments");
+                                var a = cmt_reff.push();
+                                var user = firebase.auth().currentUser.uid;
+                                a.child("userId").set(user);
+                                a.child("text").set(input_cmt.value);
+                                //date of comment
+                                var today = new Date();
+
+                                const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+                                "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
+                                var date = monthNames[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+                                a.child("date").set(date).then(function () {
+                                    // window.alert("Comment posted!");
+
+                                    //uploaded comment
+                                    var commentsRef = firebase.database().ref("blogs").child(singleblog.key).child("comments").child(a.key);
+                                    commentsRef.on('value', function (data) {
+                                        //window.alert(data.val().text);
+                                        //adding newly added comment
+                                        var single_cmnt_div = document.createElement("DIV");
+                                        single_cmnt_div.style.backgroundColor = "#f3f5fb";
+                                        single_cmnt_div.setAttribute("class", "card my-3 px-2 pt-2 pb-2 border rounded");
+                                        var cmt_user = document.createElement("SMALL");
+                                        cmt_user.style.fontSize = ".800rem";
+                                        cmt_user.style.fontWeight = "600";
+                                        cmt_user.style.lineHeight = ".700rem";
+                                        cmt_user.setAttribute("class", "text-small mb-0");
+
+                                        var sm_text2 = document.createElement("SMALL");
+                                        sm_text2.setAttribute("class", "ml-auto text-small mt-0");
+                                        sm_text2.textContent = data.val().date;
+                                        sm_text2.style.color = "#000";
+                                        sm_text2.style.fontWeight = "600";
+                                        sm_text2.style.fontSize = ".720rem";
+                                        sm_text2.style.lineHeight = ".700rem";
+
+                                        var cmt_txt = document.createElement("P");
+                                        cmt_txt.style.fontSize = ".800rem";
+                                        cmt_txt.style.lineHeight = "1rem";
+                                        cmt_txt.style.fontWeight = "400";
+                                        cmt_txt.style.marginTop = "5px";
+                                        cmt_txt.style.marginbottom = "4px";
+                                        cmt_txt.setAttribute("class", "p-0 mb-0");
+                                        cmt_txt.textContent = data.val().text;
+
+                                        var div_flex_user_date = document.createElement("DIV");
+                                        div_flex_user_date.setAttribute("class", "d-flex mb-2");
+
+                                        div_flex_user_date.appendChild(cmt_user);
+                                        div_flex_user_date.appendChild(sm_text2);
+                                        single_cmnt_div.appendChild(div_flex_user_date);
+                                        single_cmnt_div.appendChild(cmt_txt);
+
+                                        var user_ref = firebase.database().ref("users").child(data.val().userId);
+                                        user_ref.on("value", function (cmt_user_single) {
+                                            cmt_user.textContent = cmt_user_single.val().username;
+
+                                        });
+
+                                        //div for delete and reply buttons
+                                        var div_del_repl = document.createElement("DIV");
+                                        div_del_repl.setAttribute("class", "d-flex");
+
+                                        //del btn
+                                        var del_cmt_btn = document.createElement("BUTTON");
+                                        del_cmt_btn.setAttribute("class", "btn btn-link btn-sm ml-auto");
+                                        del_cmt_btn.style.color = "black";
+                                        del_cmt_btn.textContent = "Delete"
+                                        del_cmt_btn.style.fontSize = ".770rem";
+                                        del_cmt_btn.style.fontWeight = "400";
+
+                                        //checking cmnt
+                                        if (firebase.auth().currentUser.uid == data.val().userId) {
+
+                                            //deleting a cmnt
+                                            del_cmt_btn.addEventListener("click", function () {
+                                                var del_cmnt_ref = firebase.database().ref("blogs").child(singleblog.key).child("comments").child(data.key);
+
+                                                del_cmnt_ref.remove().then(function () {
+                                                    //window.alert("Comment removed!");
+                                                    mf_div_cmt.removeChild(single_cmnt_div);
+                                                }).catch(function (err) {
+                                                    window.alert("Failed:" + err);
+                                                });;
+
+                                            });
+
+                                            //appending btn to div and div to cmt_div
+                                            div_del_repl.appendChild(del_cmt_btn);
+                                            single_cmnt_div.appendChild(div_del_repl);
+
+                                        }
+                                        mf_div_cmt.appendChild(single_cmnt_div);
+
+                                    });
+
+                                });
+
+
+                            }
+                        });
+
+
+
+                        cmt_btn_span.appendChild(post_btn);
+                        cmt_btn_div.appendChild(cmt_btn_span);
+
+                        pen_img_span.appendChild(img_pen);
+                        cmt_div1.appendChild(pen_img_span);
+
+                        cmt_div.appendChild(cmt_div1);
+                        cmt_div.appendChild(input_cmt);
+                        cmt_div.appendChild(cmt_btn_div);
+
+                        //retrieving comments
+                        var single_cmt_ref = firebase.database().ref("blogs").child(singleblog.key).child("comments");
+                        single_cmt_ref.once("value", function (cmnts) {
+
+                            if (cmnts.exists()) {
+                                cmnts.forEach(function (single_cmnt) {
+
+                                    var single_cmnt_div = document.createElement("DIV");
+                                    single_cmnt_div.style.backgroundColor = "#f3f5fb";
+                                    single_cmnt_div.setAttribute("class", "card my-3 px-2 pt-2 pb-2 border rounded");
+
+
+                                    var cmt_user = document.createElement("SMALL");
+                                    cmt_user.style.fontSize = ".800rem";
+                                    cmt_user.style.fontWeight = "600";
+                                    cmt_user.style.lineHeight = ".700rem";
+                                    cmt_user.setAttribute("class", "text-small mb-0");
+
+                                    var sm_text2 = document.createElement("SMALL");
+                                    sm_text2.setAttribute("class", "ml-auto text-small mt-0");
+                                    sm_text2.textContent = single_cmnt.val().date;
+                                    sm_text2.style.fontWeight = "600";
+                                    sm_text2.style.color = "#000";
+                                    sm_text2.style.fontSize = ".720rem";
+                                    sm_text2.style.lineHeight = ".700rem";
+
+
+                                    var cmt_txt = document.createElement("P");
+                                    cmt_txt.style.fontSize = ".800rem";
+                                    cmt_txt.style.lineHeight = "1rem";
+                                    cmt_txt.style.fontWeight = "400";
+                                    cmt_txt.style.marginTop = "5px";
+                                    cmt_txt.style.marginbottom = "4px";
+                                    cmt_txt.setAttribute("class", "p-0 mb-0");
+                                    cmt_txt.textContent = single_cmnt.val().text;
+
+                                    var div_flex_user_date = document.createElement("DIV");
+                                    div_flex_user_date.setAttribute("class", "d-flex mb-2");
+
+                                    div_flex_user_date.appendChild(cmt_user);
+                                    div_flex_user_date.appendChild(sm_text2);
+                                    single_cmnt_div.appendChild(div_flex_user_date);
+                                    single_cmnt_div.appendChild(cmt_txt);
+
+                                    var user_ref = firebase.database().ref("users").child(single_cmnt.val().userId);
+                                    user_ref.on("value", function (cmt_user_single) {
+                                        cmt_user.textContent = cmt_user_single.val().username;
+
+                                    });
+
+
+                                    //div for delete and reply buttons
+                                    var div_del_repl = document.createElement("DIV");
+                                    div_del_repl.setAttribute("class", "d-flex");
+
+                                    //del btn
+                                    var del_cmt_btn = document.createElement("BUTTON");
+                                    del_cmt_btn.setAttribute("class", "btn btn-link btn-sm ml-auto");
+                                    del_cmt_btn.style.color = "black";
+                                    del_cmt_btn.textContent = "Delete"
+                                    del_cmt_btn.style.fontSize = ".770rem";
+                                    del_cmt_btn.style.fontWeight = "400";
+
+                                    //checking cmnt
+                                    if (firebase.auth().currentUser.uid == single_cmnt.val().userId) {
+
+                                        //deleting a cmnt
+                                        del_cmt_btn.addEventListener("click", function () {
+                                            var del_cmnt_ref = firebase.database().ref("blogs").child(singleblog.key).child("comments").child(single_cmnt.key);
+
+                                            del_cmnt_ref.remove().then(function () {
+                                                //window.alert("Comment removed!");
+                                                mf_div_cmt.removeChild(single_cmnt_div);
+                                            }).catch(function (err) {
+                                                window.alert("Failed:" + err);
+                                            });;
+
+                                        });
+
+                                        //appending btn to div and div to cmt_div
+                                        div_del_repl.appendChild(del_cmt_btn);
+                                        single_cmnt_div.appendChild(div_del_repl);
+
+                                    }
+                                    //appending single comment
+                                    mf_div_cmt.appendChild(single_cmnt_div);
+
+                                });
+                            }
+
+                        });
+
+
+                        //comment div appending childs 
+                        mf_div_cmt.appendChild(cmt);
+                        mf_div_cmt.appendChild(cmt_div);
+                        mf_div.appendChild(mf_div_cmt);
+
+                        //collapse_body_div.appendChild(cmt);
+                        //collapse_body_div.appendChild(cmt_div);
+                        collapse_body_div.appendChild(mf_div);
+                        collapse_div.appendChild(collapse_body_div);
+
+                        //window.alert(singleblog.key);
+                        //comment click
+                        //cmt_btn.addEventListener("click", function () {
+                        //    window.alert(singleblog.val().date)
+                        //});
+
+                        //span tag
+                        var badge = document.createElement("SPAN");
+                        //getting no of comments;
+                        var cmts_ref = firebase.database().ref().child("blogs").child(singleblog.key).child("comments");
+                        cmts_ref.on("value", function (cmts) {
+                            badge.innerHTML = cmts.numChildren();
+                        });
+
+                        badge.setAttribute("class", "badge badge-light ml-1");
+
+                        cmt_btn.appendChild(badge);
+
+                        var sm_text = document.createElement("SMALL");
+                        sm_text.setAttribute("class", "text-muted");
+                        sm_text.textContent = "Last updated on " + singleblog.val().date;
+
+                        //appending child
+                        b_div.appendChild(sm_text);
+                        b_div.appendChild(heading);
+                        b_div.appendChild(para1);
+                        b_div.appendChild(image);
+                        b_div.appendChild(para2);
+                        b_div.appendChild(cmt_btn);
+                        b_div.appendChild(button_del);
+                        b_div.appendChild(edit_btn);
+                        b_div.appendChild(collapse_div);
+
+                        // y.appendChild(image);
+                        y.appendChild(b_div);
+
+                        x.appendChild(y);
+                        document.getElementById("blog_section").appendChild(x);
+
+                        //button_click
+                        button_del.addEventListener("click", function () {
+
+                            var del_ref = firebase.database().ref().child("blogs").child(singleblog.key);
+                            del_ref.remove().then(function () {
+
+                                var userId = firebase.auth().currentUser.uid;
+                                var blog_counter = firebase.database().ref("users").child(userId);
+                                var b_cntr;
+                                blog_counter.once("value", function (snapshot) {
+                                    if (snapshot.val().n_blog == null) {
+                                        blog_counter.child("n_blog").set(0);
+                                    }
+                                    else {
+                                        b_cntr = snapshot.val().n_blog;
+                                        b_cntr = b_cntr - 1;
+                                        blog_counter.child("n_blog").set(b_cntr);
+                                    }
+
+                                });
+
+                                window.alert("Blog deleted successfully.");
+                            }).catch(function (err) {
+
+                                window.alert("Failed:" + err);
+                            });;
+
+                            var del_img_Ref = firebase.storage().ref('images/' + singleblog.val().name);
+                            del_img_Ref.delete().then(function () {
+
+
+                            }).catch(function (err) {
+
+                                window.alert("Failed:" + err);
+                            });
+                            document.getElementById("blog_section").removeChild(x);
+                        });
+                    }
+                    else {
+
+                        // window.alert('No blogs Found.');
+                    }
+                });
+            }
+        });
+
+    </script>
+
+</body>
+</html>
