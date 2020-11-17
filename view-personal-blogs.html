@@ -270,6 +270,10 @@
                     }
                     else {
                         document.getElementById("blog_count").textContent = "Your stories " + snapshot.val();
+                               if (snapshot.val()==0){
+                            document.getElementById("nostory").style.display = "block";
+                        
+                    }
                     }
                     //window.alert(snapshot.val());
 
