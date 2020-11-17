@@ -185,7 +185,9 @@
    #s-div2{
     margin-top: 30px;
    }
-  
+   .card-padding{
+    padding: 0px 1rem;
+  }
   @media screen and (max-width:480px){
 
     #back_btn{
@@ -221,5 +223,11 @@
    #my-card{
      padding: 0px;
    }
+      
+      
+   .card-padding{
+     padding: 0px;
+   }
+
 
   }
