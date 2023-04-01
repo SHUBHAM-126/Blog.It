@@ -6,10 +6,10 @@ Live website link: https://shubham-126.github.io/WEB-PROJECT/
 College project for last year(2020). Built with HTML, CSS & Javascript. Used firebase for database and user authentication. <br>
 The website shows blogs in reverse chronological order. User can create account and start uploading his own blogs and see other's blogs. User can edit or delete the blogs and can edit or delete his profile.
 
-### Signin screen:
+### Sign in screen:
 ![image](https://user-images.githubusercontent.com/73948769/229275783-87822898-45d2-46c8-9ed5-0463c279796e.png)
 
-### Signup screen:
+### Sign up screen:
 ![image](https://user-images.githubusercontent.com/73948769/229275799-e0387758-2dae-441f-9a28-1ff05bf5b7f4.png)
 
 ### Forgot password:
